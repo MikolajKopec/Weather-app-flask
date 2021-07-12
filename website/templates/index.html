@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+</head>
+<body>
+    <div class="search-bar">
+    <form method="POST">
+        <label>Nazwa miejscowości:<input type="text" placeholder="Warszawa" name="city"></label>
+        <button type="submit">sprawdź</button>
+    </form>
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category,message in messages%}
+    <div class="info {{category}}" >
+        <h1>{{message}}</h1>
+        <p class="close" onclick="close_info(); return false;">&times;</p>
+    </div>
+    {% endfor%}
+    {% endif %}
+    {% endwith %}
+    {%if data%}
+    <div class="content">
+    <div class="weather-card {{data['card_style']}}">
+        {%if (data['card_style']=="Rain") or (data['card_style']=="Thunderstorm")%}
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        {%endif%}
+        <div class="weather-card__name">
+            <h1>{{city}} [ {{data['Kraj']}} ]</h1>
+        </div>
+        <div class="weather-card__header">
+            <div class="weather-card__header-description">
+                {{data['Temperatura']}}
+            </div>
+        </div>
+        <div class="weatehr-card__description">
+            {{data['Pogoda']}}
+        </div>
+    </div>
+    {%endif%}
+</div>
+<script src="../static/scripts/close.js"> </script>
+</body>
+</html>
