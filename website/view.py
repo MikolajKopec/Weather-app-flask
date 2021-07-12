@@ -3,7 +3,7 @@ from flask.blueprints import Blueprint
 from flask.helpers import flash
 import json, urllib.request
 
-API_KEY = 'c55c07460af076fe022d229fe4316883'
+API_KEY = '####GET_API_CODE#####'
 LANG = 'PL'
 
 
