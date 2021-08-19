@@ -3,7 +3,7 @@ from flask.blueprints import Blueprint
 from flask.helpers import flash
 import json, urllib.request
 
-API_KEY = '####GET_API_CODE#####'
+API_KEY = 'insert_here'
 LANG = 'PL'
 
 
